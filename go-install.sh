@@ -8,12 +8,15 @@
 # Note: Need gccgo-go, git, and mercurial
 #
 # On Ubuntu 14.04 you could run:
-# sudo apt-get install gccgo-go git mercurial
+# sudo apt-get install gccgo-go git mercurial libpcre3-dev
 #
 
-echo "Before you proceed you should make sure you install gccgo-go, git, and mercurial."
-echo "This script also assumes you have permission to use sudo."
+echo "You are about to install Go (golang.org) on your system!"
+echo "This script also assumes you have permission to use the sudo command."
 read -p "CTRL+C to cancel or press any key to continue... " -n1 -s
+echo
+#echo "attempting to install dependencies (Ubuntu)"
+#sudo apt-get install gccgo-go git mercurial libpcre3-dev
 
 LOGPATH=$HOME/go-install-log.txt
 echo "starting log file ($LOGPATH)"
@@ -49,13 +52,14 @@ echo "building sources"
 
 echo "downloading cross-compile build scripts"
 git clone git://github.com/davecheney/golang-crosscompile.git #1>> $LOGPATH 2>> $LOGPATH
+export GOROOT=$HOME/gobuild/go
+
+echo "preparing cross-compile builds"
+source golang-crosscompile/crosscompile.bash
+go-crosscompile-build-all #1>> $LOGPATH 2>> $LOGPATH
 
 echo "installing Go to /usr/local/go"
 sudo mv ~/gobuild/go /usr/local
-cd /usr/local/go/
-
-echo "preparing cross-compile builds"
-sudo su -c 'source golang-crosscompile/crosscompile.bash;go-crosscompile-build-all' #1>> $LOGPATH 2>> $LOGPATH
 
 # Remove existing system-wide Go paths from /etc/profile
 echo "removing any existing Go paths from /etc/profile"
