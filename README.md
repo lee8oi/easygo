@@ -4,7 +4,7 @@ Custom bash scripts for installing & removing Go (golang.org) and LiteIDE.
 
 #### Features:
 
-* tested in Ubuntu 14.04 64bit
+* tested in Ubuntu 14.04
 * build Go from sources
 * system-wide installation and removal
 * set or remove paths globally in /etc/profile
