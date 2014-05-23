@@ -6,13 +6,13 @@ Custom bash scripts for installing & removing Go (golang.org) and LiteIDE.
 
 * tested in Ubuntu 14.04
 * build Go from sources
-* system-wide installation and removal
-* set or remove paths globally in /etc/profile
 * bootstrap cross-compile builds
-* check architecture and grab 32 or 64-bit LiteIDE accordingly
+* system-wide installation and removal
+* set & remove paths globally in /etc/profile
+* support 32-bit and 64-bit
 
-#### Install tools
-	$ sudo apt-get install gccgo-go git mercurial
+#### Install Dependencies
+	$ sudo apt-get install gccgo-go git mercurial libpcre3-dev
 #### Download Scripts
 	$ git clone https://github.com/lee8oi/easygo.git
 ### Install/Remove Go (source code: code.google.com/p/go)
