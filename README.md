@@ -1,6 +1,6 @@
 # EasyGo
 
-Custom bash scripts for installing & removing Go (golang.org) and LiteIDE.
+Custom bash scripts for easy installation & removal of Go and LiteIDE X22.
 
 #### Features:
 * tested in Ubuntu 14.04
