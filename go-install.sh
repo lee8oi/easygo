@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# EasyGo Install by Lee Forest (lee8oi@gmail.com)
+# EasyGo go-install by Lee Forest (lee8oi@gmail.com)
 #
 # A simple script that performs a system-wide installation of Go(golang.org)
 # from source and bootstraps for cross-compilation.
@@ -61,4 +61,3 @@ rmdir ~/gobuild
 echo "Go has been installed and bootstrapped for cross-compiling!"
 echo "Installation was logged to $LOGPATH, check logs if you have problems."
 echo "NOTE: You must re-login to update your environment paths."
-
