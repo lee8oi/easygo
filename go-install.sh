@@ -18,10 +18,6 @@ echo
 #echo "attempting to install dependencies (Ubuntu)"
 #sudo apt-get install gccgo-go git mercurial libpcre3-dev
 
-LOGPATH=$HOME/go-install-log.txt
-echo "starting log file ($LOGPATH)"
-echo `date` > $LOGPATH
-
 GOPATH=
 GOROOT=
 
@@ -48,15 +44,15 @@ cp -r ~/go/src/go ~/gobuild
 cd ~/gobuild/go/src/
 
 echo "building sources"
-./all.bash #1>> $LOGPATH 2>> $LOGPATH
+./all.bash
 
 echo "downloading cross-compile build scripts"
-git clone git://github.com/davecheney/golang-crosscompile.git #1>> $LOGPATH 2>> $LOGPATH
+git clone git://github.com/davecheney/golang-crosscompile.git
 export GOROOT=$HOME/gobuild/go
 
 echo "preparing cross-compile builds"
 source golang-crosscompile/crosscompile.bash
-go-crosscompile-build-all #1>> $LOGPATH 2>> $LOGPATH
+go-crosscompile-build-all
 
 echo "installing Go to /usr/local/go"
 sudo mv ~/gobuild/go /usr/local
@@ -76,5 +72,4 @@ sudo su -c 'echo "export PATH=\$PATH:/usr/local/go/bin:\$GOPATH/bin" >> /etc/pro
 rmdir ~/gobuild
 
 echo "Go has been installed and bootstrapped for cross-compiling!"
-echo "Installation was logged to $LOGPATH, check logs if you have problems."
 echo "NOTE: You must re-login to update your environment paths."

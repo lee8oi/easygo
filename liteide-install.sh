@@ -20,10 +20,6 @@ case `uname -m` in
 		exit
 esac
 
-LOGPATH=$HOME/go-install-log.txt
-echo "starting log file ($LOGPATH)"
-echo `date` > $LOGPATH
-
 echo "downloading binary archive"
 wget http://sourceforge.net/projects/liteide/files/X22/liteidex22.linux-$arch.tar.bz2
 sudo tar -xjf liteidex22.linux-$arch.tar.bz2
@@ -55,5 +51,4 @@ sudo sed -i "/^export PATH=.*liteide.*/d" /etc/profile # Remove existing entry
 sudo su -c 'echo "export PATH=\$PATH:/usr/local/liteide/bin" >> /etc/profile'
 
 echo "LiteIDE has been installed system-wide and configured for cross-compiling."
-echo "Installation was logged to $LOGPATH, check logs if you have problems."
 echo "NOTE: You must re-login to update your environment paths."
