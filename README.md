@@ -1,7 +1,14 @@
 # EasyGo
 
-Custom bash scripts for installing Go (golang.org) and LiteIDE.
-(tested on Ubuntu 14.04)
+Custom bash scripts for installing & removing Go (golang.org) and LiteIDE. 
+
+Features:
+
+* build Go from sources
+* system-wide installation and removal
+* set or remove paths globally in /etc/profile
+* bootstrap cross-compile builds
+* tested in Ubuntu 14.04
 
 ### Install tools
 	$ sudo apt-get install gccgo-go git mercurial
