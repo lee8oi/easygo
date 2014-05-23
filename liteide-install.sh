@@ -8,13 +8,25 @@
 echo "This script assumes you have permission to use sudo."
 read -p "CTRL+C to cancel or press any key to continue... " -n1 -s
 
+case `uname -m` in
+	i686)
+		arch=32
+		;;
+	x86_64)
+		arch=64
+		;;
+	*)
+		echo "cannot determine architecture"
+		exit
+esac
+
 LOGPATH=$HOME/go-install-log.txt
 echo "starting log file ($LOGPATH)"
 echo `date` > $LOGPATH
 
 echo "downloading binary archive"
-wget http://sourceforge.net/projects/liteide/files/X22/liteidex22.linux-64.tar.bz2
-sudo tar -xjf liteidex22.linux-64.tar.bz2
+wget http://sourceforge.net/projects/liteide/files/X22/liteidex22.linux-$arch.tar.bz2
+sudo tar -xjf liteidex22.linux-$arch.tar.bz2
 
 echo "fixing .env files"
 for file in liteide/share/liteide/liteenv/*.env
