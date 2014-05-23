@@ -57,13 +57,11 @@ go-crosscompile-build-all
 echo "installing Go to /usr/local/go"
 sudo mv ~/gobuild/go /usr/local
 
-# Remove existing system-wide Go paths from /etc/profile
 echo "removing any existing Go paths from /etc/profile"
 sudo sed -i "/^export GOROOT=.*/d" /etc/profile
 sudo sed -i "/^export GOPATH=.*/d" /etc/profile
 sudo sed -i "/^export PATH=.*\/go\/bin.*/d" /etc/profile
 
-# Add new system-wide Go paths in /etc/profile
 echo "setting new Go paths in /etc/profile"
 sudo su -c 'echo "export GOROOT=/usr/local/go" >> /etc/profile'
 sudo su -c 'echo "export GOPATH=\$HOME/go" >> /etc/profile'

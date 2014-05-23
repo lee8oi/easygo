@@ -1,19 +1,19 @@
 # EasyGo
 
-Custom bash scripts for installing & removing Go (golang.org) and LiteIDE. 
+Custom bash scripts for installing & removing Go (golang.org) and LiteIDE.
 
 #### Features:
-
 * tested in Ubuntu 14.04
-* build Go from sources
+* support 32-bit and 64-bit
+* build from official sources
 * bootstrap cross-compile builds
 * system-wide installation and removal
 * set & remove paths globally in /etc/profile
-* support 32-bit and 64-bit
+* create liteide.desktop for desktop app menu integration
 
-#### Install Dependencies
+#### Dependencies
 	$ sudo apt-get install gccgo-go git mercurial libpcre3-dev
-#### Download Scripts
+#### Download
 	$ git clone https://github.com/lee8oi/easygo.git
 ### Install/Remove Go (source code: code.google.com/p/go)
 #### Install
