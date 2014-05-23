@@ -23,26 +23,39 @@ GOPATH=
 GOROOT=
 
 mkdir ~/gobuild
-cd ~/gobuild
 
-echo "downloading Go sources"
-hg clone https://code.google.com/p/go 1>> $LOGPATH 2>> $LOGPATH
-#cp -r ~/go/src/go .
-cd go/src/
+if [ -d $HOME/go ] ; then
+	echo "~/go dir found"
+else
+	echo "creating user ~/go dir"
+	mkdir -p $HOME/go/{src,pkg,bin}
+fi
+
+if [ -d $HOME/go/src/go/src ] ; then
+	echo "Go source dir found"
+else
+	echo "downloading Go sources from code.google.com/p/go"
+	cd ~/go/src/
+	hg clone https://code.google.com/p/go
+fi
+
+echo "copying sources to build dir"
+cp -r ~/go/src/go ~/gobuild
+
+cd ~/gobuild/go/src/
 
 echo "building sources"
-./all.bash 1>> $LOGPATH 2>> $LOGPATH
+./all.bash #1>> $LOGPATH 2>> $LOGPATH
 
 echo "downloading cross-compile build scripts"
-git clone git://github.com/davecheney/golang-crosscompile.git 1>> $LOGPATH 2>> $LOGPATH
-cd ../..
+git clone git://github.com/davecheney/golang-crosscompile.git #1>> $LOGPATH 2>> $LOGPATH
 
 echo "installing Go to /usr/local/go"
 sudo mv ~/gobuild/go /usr/local
-cd /usr/local/go/src/
+cd /usr/local/go/
 
 echo "preparing cross-compile builds"
-sudo su -c 'source golang-crosscompile/crosscompile.bash;go-crosscompile-build-all' 1>> $LOGPATH 2>> $LOGPATH
+sudo su -c 'source golang-crosscompile/crosscompile.bash;go-crosscompile-build-all' #1>> $LOGPATH 2>> $LOGPATH
 
 # Remove existing system-wide Go paths from /etc/profile
 echo "removing any existing Go paths from /etc/profile"
