@@ -13,7 +13,7 @@ echo "starting log file ($LOGPATH)"
 echo `date` > $LOGPATH
 
 echo "downloading binary archive"
-wget http://hellhawks.net/liteide/liteidex22.linux-64.tar.bz2
+wget http://sourceforge.net/projects/liteide/files/X22/liteidex22.linux-64.tar.bz2
 sudo tar -xjf liteidex22.linux-64.tar.bz2
 
 echo "fixing .env files"
