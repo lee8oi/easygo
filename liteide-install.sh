@@ -20,9 +20,10 @@ case `uname -m` in
 		exit
 esac
 
+
 echo "downloading binary archive"
-wget http://sourceforge.net/projects/liteide/files/X22/liteidex22.linux-$arch.tar.bz2
-sudo tar -xjf liteidex22.linux-$arch.tar.bz2
+wget http://sourceforge.net/projects/liteide/files/X27.2.1/liteidex27.2.1.linux-$arch-qt4.tar.bz2
+sudo tar -xjf liteidex27.2.1.linux-$arch-qt4.tar.bz2
 
 echo "fixing .env files"
 for file in liteide/share/liteide/liteenv/*.env
@@ -35,7 +36,7 @@ sudo mv liteide /usr/local
 
 echo "creating & installing liteide.desktop"
 echo "[Desktop Entry]" >> liteide.desktop
-echo "Version=22" >> liteide.desktop
+echo "Version=27.2.1" >> liteide.desktop
 echo "Name=LiteIDE" >> liteide.desktop
 echo "GenericName=LiteIDE" >> liteide.desktop
 echo "Comment=Development Environment for Go (golang.org)" >> liteide.desktop
